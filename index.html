@@ -2,6 +2,20 @@
 <html>
   <head>
     <title>Hello World</title>
+    <script type="text/javascript">
+    	function append() {
+    		var text = document.getElementById("txtInput").value;
+
+    		document.getElementById("text").innerHTML += text;
+    	}
+
+    	function changeColor() {
+    		var color = document.getElementById("txtInput").value;
+
+    		document.getElementById("text").style.color = color;
+
+    	}
+    </script>
   </head>
   <body>
     <p>Hello, world!</p>
@@ -11,5 +25,9 @@
     	<p>Wheeeeeeee...</p>
     </div>
     <p>All your base are belong to us.</p>
+    <div id = "text">Text to be added to.</div>
+    <input type = "text" id = "txtInput"/>
+    <input type = "button" value = "Append text" onclick = "append();" />
+    <input type = "button" value = "Change color" onclick = "changeColor();" />
   </body>
 </html>
