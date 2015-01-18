@@ -1,0 +1,31 @@
+body {
+	background-image: url("music.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	text-align: center;
+}
+
+div.main {
+	background-color: rgb(255,255,200);
+	padding: 50px;
+	margin-top: 30px;
+	margin-left: 300px;
+	margin-right: 300px;
+}
+
+a:link, a:visited {
+	color:black;
+	background-color:rgb(180,150,100);
+	width:200px;
+	padding:4px;
+	font-weight: bold;
+	font-size:1.2em;
+	margin:50;
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	background-color:rgb(150,120,100);
+}
+

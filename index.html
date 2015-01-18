@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Hello World</title>
-    <script src = "http://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript">
-    	function append() {
-    		var text = $("#txtInput").val()
-    		$("#text").append(text);
-    	}
-
-    	function changeColor() {
-    		var color = document.getElementById("txtInput").value;
-
-    		document.getElementById("text").style.color = color;
-
-    	}
-    </script>
-  </head>
-  <body>
-    <p>Hello, world!</p>
-    <br />
-    <p>How about a nice game of Chess?</p>
-    <div>
-    	<p>Wheeeeeeee...</p>
-    </div>
-    <p>All your base are belong to us.</p>
-    <div id = "text">Text to be added to.</div>
-    <input type = "text" id = "txtInput"/>
-    <input type = "button" value = "Append text" onclick = "append();" />
-    <input type = "button" value = "Change color" onclick = "changeColor();" />
-  </body>
+    <head>
+        <title>David Jones's homepage</title>
+        <link rel="stylesheet" type="text/css" href="indexStyle.css" />
+        <script src = "http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    </head>
+    <body>
+        <div class="main">
+            <p><img src="picture.jpg" alt="profile picture" height="240" width="216"/></p>
+            <h1>David A. Jones</h1>
+            <p>I am a senior studying music composition at Brigham Young University-Idaho.  I am from Lacey, Washington.
+                Music has always been an invaluable part of my life--in many ways it defines who I am.  I began playing
+                music as early as age 8.  My primary instrument is the French horn, though I played trumpet alongside the
+                horn in high school, and I've dabbled in various percussion instruments.  Inspired by the repertoire we
+                performed in my high school's band program, I began composing my own works for band during my junior year,
+                and I've been composing music for a variety of ensembles ever since.  I served my mission in Manila, in the
+                Philippines, and developed a great love for the people, the culture, and the language there.  Following my
+                graduation here at BYU-I, I plan to go on to study composition at the graduate level and earn my Master's
+                and Doctorate in composition.  Ultimately, I hope to teach music theory and composition
+                at the college level while establishing my own career in composition.
+            </p>
+            <p>
+                Feel free to peruse my website.  I've included some recordings of a few of my works.  Feel free to give them a listen.
+            </p>
+            <div>
+                <a class="cool" href="index.html">Home</a></td>
+                <a class="cool" href="assignments.html">CS213 Assignments</a></td>
+                <a class="cool" href="recordings.php">Composition Recordings</a></td>
+            </div>
+        </div>
+    </body>
 </html>
