@@ -29,7 +29,7 @@ try {
 		die();
 	}
 
-	$stmt = $db->prepare("SELECT sessionId, `date` FROM `session` WHERE journalId = :journal GROUP BY `date` DESC");
+	$stmt = $db->prepare("SELECT sessionId, `date`, minutes FROM `session` WHERE journalId = :journal GROUP BY `date` DESC");
 	$stmt->bindValue(':journal', $_GET["journalId"], PDO::PARAM_INT);
 	$stmt->execute();
 	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -73,12 +73,13 @@ try {
 						    <td>" . $piRow["details"] . "</td>\n
 						  </tr>\n";
 				}
-				echo "</table>\n<br />\n";
+				echo "</table>\nPractice time: " . $row["minutes"] . " minutes<br /><br />\n";
 			}
 		}
 		?>
 
 		<p><a href="addSession.php" class="add">Add a practice session</a></p>
+		<p><a href="main.php" class="add yellow">Back to journal list</a></p>
 		<p><a href="logout.php" class="add yellow">Logout</a></p>
 	</div>
 </body>
