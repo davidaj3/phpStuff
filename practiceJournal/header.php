@@ -1,0 +1,1 @@
+<div class='name'>Welcome, <?php if (isset($_SESSION["currentUser"])) { echo $_SESSION["currentUser"]; } ?>!</div>
