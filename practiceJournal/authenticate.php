@@ -8,19 +8,17 @@ if($_SERVER["REQUEST_METHOD"] != "POST") {
 	die();
 }
 
-$user = "php";
-$pass = "php-pass";
-
 try {
 	$db = loadDatabase();
 
-	$statement = $db->prepare("SELECT username, password FROM user");
+	$statement = $db->prepare("SELECT userId, username, password FROM user");
 	$statement->execute();
 
 	$valid = false;
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
 		if ($_POST["username"] == $row["username"] && $_POST["password"] == $row["password"]) {
 			$valid = true;
+			$_SESSION["curUserId"] = $row["userId"];
 			$_SESSION["currentUser"] = $row["username"];
 		}
 	}

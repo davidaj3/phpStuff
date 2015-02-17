@@ -25,9 +25,14 @@ try {
 	
 
 	if (!$valid) {
-		echo "ERROR: You do not have permission to view this journal.";
+		$url = "http://" . $_SERVER["HTTP_HOST"];
+		$url .= rtrim(dirname($_SERVER["PHP_SELF"]), "/\\");
+		$url .= "/main.php";
+		header("Location: " . $url, 302);
 		die();
 	}
+
+	$_SESSION["workingJournalId"] = $_GET["journalId"];
 
 	$stmt = $db->prepare("SELECT sessionId, `date`, minutes FROM `session` WHERE journalId = :journal GROUP BY `date` DESC");
 	$stmt->bindValue(':journal', $_GET["journalId"], PDO::PARAM_INT);

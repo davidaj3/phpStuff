@@ -21,9 +21,13 @@ if (!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] === false) {
 <body>
 	<div class='main'>
 		<h1>Go Practice!</h1>
-		<?php require 'header.php'; ?>
-
 		<?php 
+		require 'header.php'; 
+		if (isset($_SESSION["errorMsg"])) {
+			echo "<p class='error'>" . $_SESSION["errorMsg"] . "</p>\n";
+			$_SESSION["errorMsg"] = null;
+		}
+		
 		try {
 			$db = loadDatabase();
 
