@@ -2,6 +2,7 @@
 session_start();
 
 require 'loadDatabase.php';
+require 'password.php';
 
 if($_SERVER["REQUEST_METHOD"] != "POST") {
 	echo "<p>Sorry, something went wrong.</p>";
@@ -17,6 +18,8 @@ try {
 
 $username = $_POST["username"];
 $password = $_POST["password"];
+
+$passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
 $duplicate = false;
 
@@ -34,7 +37,7 @@ if ($duplicate) {
 	$_SESSION["errorMsg"] = null;
 	$stmt = $db->prepare("INSERT INTO user (username, password) VALUES (:username, :password)");
 	$stmt->bindValue(":username", $username, PDO::PARAM_STR);
-	$stmt->bindValue(":password", $password, PDO::PARAM_STR);
+	$stmt->bindValue(":password", $passwordHash, PDO::PARAM_STR);
 	$stmt->execute();
 }
 

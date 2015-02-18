@@ -2,6 +2,7 @@
 session_start();
 
 require 'loadDatabase.php';
+require 'password.php';
 
 if($_SERVER["REQUEST_METHOD"] != "POST") {
 	echo "<p>Sorry, something went wrong.</p>";
@@ -11,12 +12,13 @@ if($_SERVER["REQUEST_METHOD"] != "POST") {
 try {
 	$db = loadDatabase();
 
-	$statement = $db->prepare("SELECT userId, username, password FROM user");
+	$statement = $db->prepare("SELECT userId, username, password FROM user WHERE username=:user");
+	$statement->bindValue(":user", $_POST["username"], PDO::PARAM_STR);
 	$statement->execute();
 
 	$valid = false;
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-		if ($_POST["username"] == $row["username"] && $_POST["password"] == $row["password"]) {
+		if (password_verify($_POST["password"], $row["password"])) {
 			$valid = true;
 			$_SESSION["curUserId"] = $row["userId"];
 			$_SESSION["currentUser"] = $row["username"];
