@@ -26,6 +26,9 @@ if (!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] === false) {
 		if (isset($_SESSION["errorMsg"])) {
 			echo "<p class='error'>" . $_SESSION["errorMsg"] . "</p>\n";
 			$_SESSION["errorMsg"] = null;
+		} elseif (isset($_SESSION["success"]) && $_SESSION["success"] === true) {
+			echo "<p class='success'>Journal created successfully</p>";
+			$_SESSION["success"] = null;
 		}
 		
 		try {

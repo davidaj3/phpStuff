@@ -54,7 +54,16 @@ try {
 <body>
 	<div class='main'>
 		<h1>Go Practice!</h1>
-		<?php require 'header.php' ?>
+		<?php 
+		require 'header.php'; 
+		if (isset($_SESSION["errorMsg"])) {
+			echo "<p class='error'>" . $_SESSION["errorMsg"] . "</p>\n";
+			$_SESSION["errorMsg"] = null;
+		} elseif (isset($_SESSION["success"]) && $_SESSION["success"] === true) {
+			echo "<p class='success'>Session added successfully</p>";
+			$_SESSION["success"] = null;
+		}
+		?>
 		<h2>'<?php foreach ($db->query("SELECT name FROM journal WHERE journalId = " . $_GET["journalId"]) as $row) { echo $row["name"]; } ?>'</h2>
 		<?php 
 		if (empty($rows)) {

@@ -36,6 +36,7 @@ if (!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] === false) {
 			<p>New Journal Name: <input type='text' name='journalName' /></p>
 			<p><input type='submit' value='Create Journal' /></p>
 		</form>
+		<a class='yellow add' href='main.php'>Back to Home</a>
 	</div>
 </body>
 </html>
